@@ -8,9 +8,10 @@ on:
 jobs:
   build:
   - name: Set up Gradle
-  uses: gradle/gradle-build-action@v2
-   - name: Build debug APK
-  run: gradle assembleDebug --no-daemon
+        uses: gradle/gradle-build-action@v2
+
+      - name: Build debug APK
+        run: gradle assembleDebug --no-daemon
 
     steps:
       - uses: actions/checkout@v3
