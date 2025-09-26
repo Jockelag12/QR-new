@@ -3,17 +3,15 @@ name: Build Android APK
 on:
   push:
     branches: [ "main" ]   # Runs on push to main branch
-  workflow_dispatch:        # Lets you run manually
+  workflow_dispatch:        # Lets you trigger manually from GitHub
 
 jobs:
-  - name: Set up Gradle
-        uses: gradle/gradle-build-action@v2
-
-      - name: Build debug APK
-        run: gradle assembleDebug --no-daemon
+  build:
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: Set up JDK
         uses: actions/setup-java@v3
@@ -21,11 +19,11 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
+      - name: Set up Gradle
+        uses: gradle/gradle-build-action@v2
 
       - name: Build debug APK
-        run: ./gradlew assembleDebug --no-daemon
+        run: gradle assembleDebug --no-daemon
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
