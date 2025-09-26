@@ -6,7 +6,6 @@ on:
   workflow_dispatch:        # Lets you run manually
 
 jobs:
-  build:
   - name: Set up Gradle
         uses: gradle/gradle-build-action@v2
 
