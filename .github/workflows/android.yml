@@ -2,13 +2,12 @@ name: Build Android APK
 
 on:
   push:
-    branches: [ "main" ]   # Runs on push to main branch
-  workflow_dispatch:        # Lets you trigger manually from GitHub
+    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
